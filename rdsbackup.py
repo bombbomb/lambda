@@ -1,7 +1,12 @@
+### RDS Backup Tool
+### Copies latest snapshots from east to west.
+### 1st of the month snapshots to be kept on 13 month rotation.
+### Deletes any long-term backups over 13 months old.
+
 import boto3
 import operator
 
-ACCOUNT = 'bombbomb'
+ACCOUNT = '356735905217'
 
 
 def copy_latest_snapshot():
@@ -64,7 +69,7 @@ def remove_old_snapshots():
     )
 
     if len(response['DBSnapshots']) == 0:
-        raise Exception("No manual snapshots in Frankfurt found")
+        raise Exception("No manual snapshots in us-west-1 found")
 
     snapshots_per_project = {}
     for snapshot in response['DBSnapshots']:
