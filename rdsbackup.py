@@ -8,7 +8,7 @@ import boto3
 import operator
 from datetime import datetime, timedelta, tzinfo
 
-ACCOUNT = '356735905217'
+ACCOUNT = 'process.env.TEST'
 
 def copy_latest_snapshot():
     client = boto3.client('rds', 'us-east-1')
