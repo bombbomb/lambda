@@ -3,11 +3,12 @@
 ### 1st of the month snapshots to be kept on 13 month rotation.
 ### Deletes any long-term backups over 13 months old.
 
+import json
 import boto3
 import operator
+from datetime import datetime, timedelta, tzinfo
 
 ACCOUNT = '356735905217'
-
 
 def copy_latest_snapshot():
     client = boto3.client('rds', 'us-east-1')
